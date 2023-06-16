@@ -5,19 +5,9 @@
 package javaapplication2;
 
 
-import br.com.adilson.util.Extenso;
-import br.com.adilson.util.PrinterMatrix;
-import com.formdev.flatlaf.FlatDarculaLaf;
-import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import java.awt.Dimension;
 import javax.swing.JTable;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
@@ -27,25 +17,23 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.Document;
-public class NewJFrame extends javax.swing.JFrame {
+public class mainComanderoColoso extends javax.swing.JFrame {
 
     DefaultTableModel model;
-    
+     /**
+     * Este metodo manda a llamar a el JFrame llamado mainComanderoColoso
+     * Predefine la dimension en la pantalla de 1366x768 px asi mismo
+     * inicializa los componentes para la creacion del JTable en donde
+     * se guardaran los datos.
+     */
 
-    public NewJFrame() {
-
+    public mainComanderoColoso() {
+        setPreferredSize(new Dimension( 1366, 768 ));
         initComponents();
         String[] titulos = {"NoPedido", "NoEmpleado", "TotalVenta", "Fecha"};
         model = new DefaultTableModel(null, titulos);
-        jTable1.setModel(model);
-        
-         
-        
+        mainTable.setModel(model);
         mostrarDatos();
-       
-        
-        
     }
 
     /**
@@ -62,7 +50,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
-        jLabel1 = new javax.swing.JLabel();
+        logoColoso = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         noEmpleadoLabel = new javax.swing.JLabel();
         empladoTextField = new javax.swing.JTextField();
@@ -70,14 +58,14 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        mainAgregarBtn = new javax.swing.JButton();
+        mainModificarBtn = new javax.swing.JButton();
+        mainEliminarBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        mainTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        mainResetBtn = new javax.swing.JButton();
+        mainBuscarBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         editarRepartidor = new javax.swing.JMenu();
         repartidoresMenu = new javax.swing.JMenuItem();
@@ -154,9 +142,9 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/Logo-removebg-preview.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 180, 190));
-        jLabel1.getAccessibleContext().setAccessibleDescription("");
+        logoColoso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/Logo-removebg-preview.png"))); // NOI18N
+        getContentPane().add(logoColoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 180, 190));
+        logoColoso.getAccessibleContext().setAccessibleDescription("");
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel2.setText("COMANDERO COLOSO");
@@ -201,44 +189,43 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 181, -1));
 
-        jButton1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/save.png"))); // NOI18N
-        jButton1.setText("AGREGAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        mainAgregarBtn.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        mainAgregarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/save.png"))); // NOI18N
+        mainAgregarBtn.setText("AGREGAR");
+        mainAgregarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                mainAgregarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, 56));
+        getContentPane().add(mainAgregarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, 56));
 
-        jButton2.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/modify.png"))); // NOI18N
-        jButton2.setText("MODIFICAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        mainModificarBtn.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        mainModificarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/modify.png"))); // NOI18N
+        mainModificarBtn.setText("MODIFICAR");
+        mainModificarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                mainModificarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, -1, 56));
+        getContentPane().add(mainModificarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, -1, 56));
 
-        jButton3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Cursos\\Spring\\JavaApplication2\\src\\javaapplication2\\delete.png")); // NOI18N
-        jButton3.setText("ELIMINAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        mainEliminarBtn.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        mainEliminarBtn.setText("ELIMINAR");
+        mainEliminarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                mainEliminarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, -1, 56));
+        getContentPane().add(mainEliminarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 200, 56));
 
         jScrollPane2.setViewportBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane2.setColumnHeaderView(jTable1);
+        jScrollPane2.setColumnHeaderView(mainTable);
         jScrollPane2.setWheelScrollingEnabled(false);
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        mainTable.setAutoCreateRowSorter(true);
+        mainTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        mainTable.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        mainTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -246,34 +233,34 @@ public class NewJFrame extends javax.swing.JFrame {
 
             }
         ));
-        jTable1.setAlignmentX(1.0F);
-        jTable1.setAlignmentY(1.0F);
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setDropMode(javax.swing.DropMode.ON);
-        jTable1.setFillsViewportHeight(true);
-        jTable1.setFocusCycleRoot(true);
-        jTable1.setName(""); // NOI18N
-        jTable1.setPreferredSize(new java.awt.Dimension(800, 100000));
-        jTable1.setRowHeight(40);
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTable1.setShowGrid(true);
-        jTable1.setSurrendersFocusOnKeystroke(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jTable1.setVerifyInputWhenFocusTarget(false);
-        jTable1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+        mainTable.setAlignmentX(1.0F);
+        mainTable.setAlignmentY(1.0F);
+        mainTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        mainTable.setColumnSelectionAllowed(true);
+        mainTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        mainTable.setDropMode(javax.swing.DropMode.ON);
+        mainTable.setFillsViewportHeight(true);
+        mainTable.setFocusCycleRoot(true);
+        mainTable.setName(""); // NOI18N
+        mainTable.setPreferredSize(new java.awt.Dimension(800, 100000));
+        mainTable.setRowHeight(40);
+        mainTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        mainTable.setShowGrid(true);
+        mainTable.setSurrendersFocusOnKeystroke(true);
+        mainTable.getTableHeader().setReorderingAllowed(false);
+        mainTable.setVerifyInputWhenFocusTarget(false);
+        mainTable.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
-                jTable1MouseWheelMoved(evt);
+                mainTableMouseWheelMoved(evt);
             }
         });
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        mainTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                mainTableMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jScrollPane2.setViewportView(mainTable);
+        mainTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 646, 550));
 
@@ -281,25 +268,25 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel5.setText("Desarrollado por Irán García para Pollos Coloso. Derechos reservados.");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 378, 23));
 
-        jButton4.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/clear.png"))); // NOI18N
-        jButton4.setLabel("RESET");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        mainResetBtn.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        mainResetBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/clear.png"))); // NOI18N
+        mainResetBtn.setLabel("RESET");
+        mainResetBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                mainResetBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 181, 56));
+        getContentPane().add(mainResetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 181, 56));
 
-        jButton5.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/search.png"))); // NOI18N
-        jButton5.setText("BUSCAR");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        mainBuscarBtn.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        mainBuscarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/search.png"))); // NOI18N
+        mainBuscarBtn.setText("BUSCAR");
+        mainBuscarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                mainBuscarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 500, 167, 56));
+        getContentPane().add(mainBuscarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 500, 167, 56));
 
         editarRepartidor.setBackground(new java.awt.Color(255, 255, 255));
         editarRepartidor.setForeground(new java.awt.Color(3, 3, 3));
@@ -332,7 +319,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_formPropertyChange
-
+     /**
+     * Este metodo realiza la activación del boton de pestañas llamado repartidores.
+     * Para esto realiza una conexion con la base de datos para asi realizar una consulta
+     * Esta consulta manda la informacion de un usuario, asi como de una contraseña y la compara
+     * Si el usuario y la contraseña existen en la base de datos y tienen los permisos necesarios
+     * Despliega el frame de usuario.
+     */
     private void repartidoresMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repartidoresMenuActionPerformed
         conexion objConexion = new conexion();
         JPasswordField contraseña = new JPasswordField();
@@ -351,7 +344,10 @@ public class NewJFrame extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_repartidoresMenuActionPerformed
-
+     /**
+     * Este metodo realiza la activación del boton de pestañas llamado Corte Repartidores
+     * y despliega el frame de usuario.
+     */
     private void corteRepartidoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corteRepartidoresActionPerformed
         CorteEmpleados c = new CorteEmpleados();
         c.setVisible(true);
@@ -361,8 +357,14 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-//Boton de insertar
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    /**
+     * Este metodo realiza la activación del boton llamado Agregar
+     * Realiza una conexion a la base de datos, obtiene la informacion de los JTextFields 
+     * y realiza una insert para poder agregar esos datos en la base de datos actual.
+     * Despues de realizada el insert limpia la tabla actual, limpia los campos con los datos ya insertados
+     * y despues despliega la informacion nuevamente en la tabla con la informacion ya actualizada de la base de datos.
+     */
+    private void mainAgregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainAgregarBtnActionPerformed
 
         conexion objConexion = new conexion();
         pedidosBL oPedidos = recuperarDatosGUI();
@@ -372,7 +374,7 @@ public class NewJFrame extends javax.swing.JFrame {
         limpiarCampos();
         mostrarDatos();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_mainAgregarBtnActionPerformed
     public pedidosBL recuperarDatosGUI() //Este metodo recupera los datos en los Textfield para ser seleccionados
     {
         pedidosBL oPedidos = new pedidosBL();
@@ -448,7 +450,7 @@ public class NewJFrame extends javax.swing.JFrame {
         }
 
     }
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void mainModificarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainModificarBtnActionPerformed
         // TODO add your handling code here:
         conexion objConexion = new conexion();
         pedidosBL oPedidos = recuperarDatosGUI();
@@ -459,7 +461,7 @@ public class NewJFrame extends javax.swing.JFrame {
         mostrarDatos();
 
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_mainModificarBtnActionPerformed
 
     private void empladoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empladoTextFieldActionPerformed
         // TODO add your handling code here:
@@ -469,7 +471,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void mainTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainTableMouseClicked
         // TODO add your handling code here:
 
         if (evt.getClickCount() == 1) {
@@ -480,9 +482,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
         }
 
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_mainTableMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void mainEliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainEliminarBtnActionPerformed
 
         conexion objConexion = new conexion();
         pedidosBL oPedidos = recuperarDatosGUI();
@@ -500,14 +502,14 @@ public class NewJFrame extends javax.swing.JFrame {
         mostrarDatos();
 
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_mainEliminarBtnActionPerformed
 
-    private void jTable1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jTable1MouseWheelMoved
+    private void mainTableMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_mainTableMouseWheelMoved
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_jTable1MouseWheelMoved
+    }//GEN-LAST:event_mainTableMouseWheelMoved
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void mainResetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainResetBtnActionPerformed
         // TODO add your handling code here:
          conexion objConexion = new conexion();
         String strSentenciaInsert = "DELETE FROM Pedidos";
@@ -522,18 +524,19 @@ public class NewJFrame extends javax.swing.JFrame {
         limpiarTabla();
         limpiarCampos();
         mostrarDatos();
-    }//GEN-LAST:event_jButton4ActionPerformed
+        
+    }//GEN-LAST:event_mainResetBtnActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void mainBuscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBuscarBtnActionPerformed
         // TODO add your handling code here:
         limpiarTabla();
         limpiarCampos();
         busquedaDatos();
 
 
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_mainBuscarBtnActionPerformed
     public void limpiarTabla() {
-        for (int i = 0; i < jTable1.getRowCount(); i++) {
+        for (int i = 0; i < mainTable.getRowCount(); i++) {
             model.removeRow(i);
             i -= 1;
         }
@@ -562,7 +565,8 @@ public class NewJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new mainComanderoColoso().setVisible(true);
+                
             }
         });
     }
@@ -571,26 +575,26 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem corteRepartidores;
     private javax.swing.JMenu editarRepartidor;
     private javax.swing.JTextField empladoTextField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel logoColoso;
+    private javax.swing.JButton mainAgregarBtn;
+    private javax.swing.JButton mainBuscarBtn;
+    private javax.swing.JButton mainEliminarBtn;
+    private javax.swing.JButton mainModificarBtn;
+    private javax.swing.JButton mainResetBtn;
+    private javax.swing.JTable mainTable;
     private javax.swing.JLabel noEmpleadoLabel;
     private javax.swing.JMenuItem repartidoresMenu;
     // End of variables declaration//GEN-END:variables
