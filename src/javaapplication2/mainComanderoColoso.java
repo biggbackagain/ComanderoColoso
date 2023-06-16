@@ -22,7 +22,7 @@ public class mainComanderoColoso extends javax.swing.JFrame {
     DefaultTableModel model;
      /**
      * Este metodo manda a llamar a el JFrame llamado mainComanderoColoso
-     * Predefine la dimension en la pantalla de 1366x768 px asi mismo
+     * Predefine la dimension en la pantalla de 1366 x 768 px asi mismo
      * inicializa los componentes para la creacion del JTable en donde
      * se guardaran los datos.
      */
