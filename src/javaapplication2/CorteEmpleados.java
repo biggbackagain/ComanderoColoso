@@ -70,7 +70,7 @@ public class CorteEmpleados extends javax.swing.JFrame {
                 repartidoresCorteBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(repartidoresCorteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 176, -1));
+        getContentPane().add(repartidoresCorteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 176, -1));
 
         tableRepartidores.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         tableRepartidores.setModel(new javax.swing.table.DefaultTableModel(
@@ -146,7 +146,8 @@ public class CorteEmpleados extends javax.swing.JFrame {
             LocalDateTime ldt = LocalDateTime.now();
             String Fecha = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH).format(ldt);
             System.out.println(Fecha);
-            jLabel4.setText("                           TOTAL A PAGAR EMPLEADO #" + result);
+            
+           
             ResultSet resultado = objConexion.consultarRegistros("SELECT NoPedido, NoEmpleado, TotalVenta, Fecha FROM Pedidos WHERE NoEmpleado= " + result + " AND Fecha BETWEEN '" + Fecha + " 00:00:00' AND '" + Fecha + " 23:59:59'");
 
             while (resultado.next()) {
@@ -154,7 +155,7 @@ public class CorteEmpleados extends javax.swing.JFrame {
                 model.addRow(oUsuario);
                 cont++;
             }
-            jLabel7.setText("  TOTAL DE PEDIDOS: "+cont+" Y LA COMISION ES DE: $"+ cont*5+".00 PESOS");
+            jLabel4.setText("<html> <h1 style='text-align: center;'>TOTAL A PAGAR EMPLEADO #" + result + "</h1> <h3 style='text-align: center;'>  <br>TOTAL DE PEDIDOS: "+cont+" Y LA COMISION ES DE: $"+ cont*5+".00 PESOS</h3></html>");
 
             resultado.close();
         } catch (Exception e) {
@@ -204,7 +205,8 @@ public class CorteEmpleados extends javax.swing.JFrame {
                 resultado.close();
             } else {
                 d = Double.parseDouble(resultado.getString("TotalAmo"));
-                jLabel6.setText("           $" + d + "0 PESOS");
+                jLabel6.setText("<html> <br><h2 style='text-align: right;'>                 $" + d + "0 PESOS </h2></html>");
+                
                 resultado.close();
 
             }

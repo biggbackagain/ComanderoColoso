@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 public class conexion 
 {
-    String strConexionDB= "jdbc:sqlite:C:/Users/sistema.s3db";
+    String strConexionDB= "jdbc:sqlite:src/javaapplication2/sqliteadmin/sistema.s3db";
     Connection conn = null;
     public conexion()
     {

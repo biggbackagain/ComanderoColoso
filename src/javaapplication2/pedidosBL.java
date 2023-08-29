@@ -16,6 +16,23 @@ public class pedidosBL
    private int noEmpleado;
    private int totalVenta;
    private String fechactual;
+   private int NoComanda;
+
+    public int getNoComanda() {
+        return NoComanda;
+    }
+
+    public void setNoComanda(int NoComanda) {
+        try 
+        {
+            this.NoComanda = NoComanda;
+        } 
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Ingresa solamente NUMEROS y no Agregues, elimines dejando espacios en blanco");
+        }
+        
+    }
   
 
     public int getNoPedido() {

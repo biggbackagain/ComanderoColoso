@@ -30,7 +30,7 @@ public class mainComanderoColoso extends javax.swing.JFrame {
     public mainComanderoColoso() {
         setPreferredSize(new Dimension( 1366, 768 ));
         initComponents();
-        String[] titulos = {"NoPedido", "NoEmpleado", "TotalVenta", "Fecha"};
+        String[] titulos = {"NoPedido","NoComanda", "NoEmpleado", "TotalVenta", "Fecha"};
         model = new DefaultTableModel(null, titulos);
         mainTable.setModel(model);
         mostrarDatos();
@@ -53,19 +53,20 @@ public class mainComanderoColoso extends javax.swing.JFrame {
         logoColoso = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         noEmpleadoLabel = new javax.swing.JLabel();
-        empladoTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        campoComanda = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        campoTotal = new javax.swing.JTextField();
         mainAgregarBtn = new javax.swing.JButton();
         mainModificarBtn = new javax.swing.JButton();
         mainEliminarBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         mainTable = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
         mainResetBtn = new javax.swing.JButton();
         mainBuscarBtn = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        cajaEmpleados = new javax.swing.JComboBox<>();
+        campoTicket = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         editarRepartidor = new javax.swing.JMenu();
         repartidoresMenu = new javax.swing.JMenuItem();
@@ -134,6 +135,10 @@ public class mainComanderoColoso extends javax.swing.JFrame {
         setFocusTraversalPolicyProvider(true);
         setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         setForeground(java.awt.Color.white);
+        setLocationByPlatform(true);
+        setMaximumSize(new java.awt.Dimension(1220, 666));
+        setMinimumSize(new java.awt.Dimension(1220, 666));
+        setPreferredSize(new java.awt.Dimension(1224, 666));
         setResizable(false);
         addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -143,7 +148,7 @@ public class mainComanderoColoso extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logoColoso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/Logo-removebg-preview.png"))); // NOI18N
-        getContentPane().add(logoColoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 180, 190));
+        getContentPane().add(logoColoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 180, 190));
         logoColoso.getAccessibleContext().setAccessibleDescription("");
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
@@ -152,42 +157,33 @@ public class mainComanderoColoso extends javax.swing.JFrame {
 
         noEmpleadoLabel.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         noEmpleadoLabel.setText("# Empleado");
-        getContentPane().add(noEmpleadoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 323, -1, -1));
-
-        empladoTextField.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        empladoTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        empladoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                empladoTextFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(empladoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 370, 167, -1));
+        getContentPane().add(noEmpleadoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        jLabel3.setText("# Pedido");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 323, -1, -1));
+        jLabel3.setText("# Comanda");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        campoComanda.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        campoComanda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoComanda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                campoComandaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 167, -1));
+        getContentPane().add(campoComanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 130, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel4.setText("Total ticket");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 323, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, -1));
 
-        jTextField2.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        campoTotal.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        campoTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                campoTotalActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 181, -1));
+        getContentPane().add(campoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 130, -1));
 
         mainAgregarBtn.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         mainAgregarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/save.png"))); // NOI18N
@@ -197,7 +193,7 @@ public class mainComanderoColoso extends javax.swing.JFrame {
                 mainAgregarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(mainAgregarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, 56));
+        getContentPane().add(mainAgregarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 170, 56));
 
         mainModificarBtn.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         mainModificarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/modify.png"))); // NOI18N
@@ -207,16 +203,17 @@ public class mainComanderoColoso extends javax.swing.JFrame {
                 mainModificarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(mainModificarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, -1, 56));
+        getContentPane().add(mainModificarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 190, 56));
 
         mainEliminarBtn.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        mainEliminarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/delete.png"))); // NOI18N
         mainEliminarBtn.setText("ELIMINAR");
         mainEliminarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainEliminarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(mainEliminarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 200, 56));
+        getContentPane().add(mainEliminarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 170, 60));
 
         jScrollPane2.setViewportBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane2.setColumnHeaderView(mainTable);
@@ -262,11 +259,7 @@ public class mainComanderoColoso extends javax.swing.JFrame {
         jScrollPane2.setViewportView(mainTable);
         mainTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 646, 550));
-
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel5.setText("Desarrollado por Irán García para Pollos Coloso. Derechos reservados.");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 378, 23));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 620, 570));
 
         mainResetBtn.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         mainResetBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/clear.png"))); // NOI18N
@@ -276,7 +269,7 @@ public class mainComanderoColoso extends javax.swing.JFrame {
                 mainResetBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(mainResetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 181, 56));
+        getContentPane().add(mainResetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 570, 170, 50));
 
         mainBuscarBtn.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         mainBuscarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication2/search.png"))); // NOI18N
@@ -286,7 +279,26 @@ public class mainComanderoColoso extends javax.swing.JFrame {
                 mainBuscarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(mainBuscarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 500, 167, 56));
+        getContentPane().add(mainBuscarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 570, 167, 50));
+
+        jLabel6.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel6.setText("# Ticket");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, 30));
+
+        cajaEmpleados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        cajaEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cajaEmpleadosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cajaEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 130, 30));
+
+        campoTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTicketActionPerformed(evt);
+            }
+        });
+        getContentPane().add(campoTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 130, 30));
 
         editarRepartidor.setBackground(new java.awt.Color(255, 255, 255));
         editarRepartidor.setForeground(new java.awt.Color(3, 3, 3));
@@ -354,9 +366,9 @@ public class mainComanderoColoso extends javax.swing.JFrame {
        
     }//GEN-LAST:event_corteRepartidoresActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void campoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_campoTotalActionPerformed
     /**
      * Este metodo realiza la activación del boton llamado Agregar
      * Realiza una conexion a la base de datos, obtiene la informacion de los JTextFields 
@@ -368,7 +380,7 @@ public class mainComanderoColoso extends javax.swing.JFrame {
 
         conexion objConexion = new conexion();
         pedidosBL oPedidos = recuperarDatosGUI();
-        String strSentenciaInsert = "INSERT INTO Pedidos (NoPedido,Noempleado,TotalVenta,Fecha) values(" + oPedidos.getNoPedido() + "," + oPedidos.getNoEmpleado() + "," + oPedidos.getTotalVenta() + ",datetime('now', 'localtime'));";
+        String strSentenciaInsert = "INSERT INTO Pedidos (NoPedido,NoComanda,Noempleado,TotalVenta,Fecha) values(" + oPedidos.getNoPedido() + ","+oPedidos.getNoComanda() + ","  + oPedidos.getNoEmpleado() + "," + oPedidos.getTotalVenta() + ",datetime('now', 'localtime'));";
         objConexion.ejecutarSentenciaSQL(strSentenciaInsert);
         limpiarTabla();
         limpiarCampos();
@@ -380,10 +392,11 @@ public class mainComanderoColoso extends javax.swing.JFrame {
         pedidosBL oPedidos = new pedidosBL();
         try {
 
-            int NoPedido = (jTextField1.getText().isEmpty()) ? 0 : Integer.parseInt(jTextField1.getText());
+            int NoPedido = (campoTicket.getText().isEmpty()) ? 0 : Integer.parseInt(campoTicket.getText());
             oPedidos.setNoPedido(NoPedido);
-            oPedidos.setNoEmpleado(Integer.parseInt(empladoTextField.getText()));
-            oPedidos.setTotalVenta(Integer.parseInt(jTextField2.getText()));
+            oPedidos.setNoComanda(Integer.parseInt(campoComanda.getText()));
+            oPedidos.setNoEmpleado(Integer.parseInt((String) cajaEmpleados.getSelectedItem()));
+            oPedidos.setTotalVenta(Integer.parseInt(campoTotal.getText()));
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ingresa solamente NUMEROS y no dejes ESPACIOS EN BLANCO");
@@ -405,7 +418,7 @@ public class mainComanderoColoso extends javax.swing.JFrame {
 
             ResultSet resultado = objConexion.consultarRegistros("SELECT *FROM Pedidos WHERE Fecha BETWEEN '"+Fecha+" 00:00:00' AND '"+Fecha+" 23:59:59'");
             while (resultado.next()) {
-                Object[] oUsuario = {resultado.getString("NoPedido"), resultado.getString("NoEmpleado"), resultado.getString("TotalVenta"), resultado.getString("Fecha")};
+                Object[] oUsuario = {resultado.getString("NoPedido"),resultado.getString("NoComanda"), resultado.getString("NoEmpleado"), resultado.getString("TotalVenta"), resultado.getString("Fecha")};
                 model.addRow(oUsuario);
             }
 
@@ -437,10 +450,10 @@ public class mainComanderoColoso extends javax.swing.JFrame {
 
         try {
             int result = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de comanda"));
-            ResultSet resultado = objConexion.consultarRegistros("SELECT NoPedido, NoEmpleado, TotalVenta, Fecha FROM Pedidos WHERE NoPedido=" + result);
+            ResultSet resultado = objConexion.consultarRegistros("SELECT NoPedido, NoComanda, NoEmpleado, TotalVenta, Fecha FROM Pedidos WHERE NoPedido=" + result);
 
             while (resultado.next()) {
-                Object[] oUsuario = {resultado.getString("NoPedido"), resultado.getString("NoEmpleado"), resultado.getString("TotalVenta"), resultado.getString("Fecha")};
+                Object[] oUsuario = {resultado.getString("NoPedido"),resultado.getString("NoComanda"), resultado.getString("NoEmpleado"), resultado.getString("TotalVenta"), resultado.getString("Fecha")};
                 model.addRow(oUsuario);
             }
 
@@ -454,7 +467,7 @@ public class mainComanderoColoso extends javax.swing.JFrame {
         // TODO add your handling code here:
         conexion objConexion = new conexion();
         pedidosBL oPedidos = recuperarDatosGUI();
-        String strSentenciaInsert = "UPDATE Pedidos SET NoEmpleado = " + empladoTextField.getText() + ",TotalVenta=" + jTextField2.getText() + " WHERE NoPedido=" + jTextField1.getText();
+        String strSentenciaInsert = "UPDATE Pedidos SET NoPedido = " + oPedidos.getNoPedido()+ ", NoComanda="+ oPedidos.getNoComanda()+", NoEmpleado= "+oPedidos.getNoEmpleado()  + ",TotalVenta=" + oPedidos.getTotalVenta() + " WHERE NoPedido= " + oPedidos.getNoPedido();        
         objConexion.ejecutarSentenciaSQL(strSentenciaInsert);
         limpiarTabla();
         limpiarCampos();
@@ -463,22 +476,19 @@ public class mainComanderoColoso extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mainModificarBtnActionPerformed
 
-    private void empladoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empladoTextFieldActionPerformed
+    private void campoComandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoComandaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_empladoTextFieldActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_campoComandaActionPerformed
 
     private void mainTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainTableMouseClicked
         // TODO add your handling code here:
 
         if (evt.getClickCount() == 1) {
             JTable receptor = (JTable) evt.getSource();
-            jTextField1.setText(receptor.getModel().getValueAt(receptor.getSelectedRow(), 0).toString());
-            empladoTextField.setText(receptor.getModel().getValueAt(receptor.getSelectedRow(), 1).toString());
-            jTextField2.setText(receptor.getModel().getValueAt(receptor.getSelectedRow(), 2).toString());
+            campoTicket.setText(receptor.getModel().getValueAt(receptor.getSelectedRow(), 0).toString());
+            campoComanda.setText(receptor.getModel().getValueAt(receptor.getSelectedRow(), 1).toString());
+            cajaEmpleados.setSelectedItem(receptor.getModel().getValueAt(receptor.getSelectedRow(), 2).toString());
+            campoTotal.setText(receptor.getModel().getValueAt(receptor.getSelectedRow(), 3).toString());
 
         }
 
@@ -488,7 +498,7 @@ public class mainComanderoColoso extends javax.swing.JFrame {
 
         conexion objConexion = new conexion();
         pedidosBL oPedidos = recuperarDatosGUI();
-        String strSentenciaInsert = "DELETE FROM Pedidos WHERE NoPedido=" + jTextField1.getText();
+        String strSentenciaInsert = "DELETE FROM Pedidos WHERE NoPedido=" + oPedidos.getNoPedido();
         JPasswordField contraseña = new JPasswordField();
         String contra = "";
         int user = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su número de usuario"));
@@ -535,6 +545,14 @@ public class mainComanderoColoso extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_mainBuscarBtnActionPerformed
+
+    private void cajaEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaEmpleadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cajaEmpleadosActionPerformed
+
+    private void campoTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTicketActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTicketActionPerformed
     public void limpiarTabla() {
         for (int i = 0; i < mainTable.getRowCount(); i++) {
             model.removeRow(i);
@@ -543,9 +561,9 @@ public class mainComanderoColoso extends javax.swing.JFrame {
     }
 
     public void limpiarCampos() {
-        jTextField1.setText("");
-        empladoTextField.setText("");
-        jTextField2.setText("");
+        campoTicket.setText("");
+        campoComanda.setText("");
+        campoTotal.setText("");
     }
    
     /**
@@ -572,9 +590,12 @@ public class mainComanderoColoso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cajaEmpleados;
+    private javax.swing.JTextField campoComanda;
+    private javax.swing.JTextField campoTicket;
+    private javax.swing.JTextField campoTotal;
     private javax.swing.JMenuItem corteRepartidores;
     private javax.swing.JMenu editarRepartidor;
-    private javax.swing.JTextField empladoTextField;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JFrame jFrame1;
@@ -583,11 +604,9 @@ public class mainComanderoColoso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel logoColoso;
     private javax.swing.JButton mainAgregarBtn;
     private javax.swing.JButton mainBuscarBtn;
